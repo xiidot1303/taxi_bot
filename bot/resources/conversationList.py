@@ -1,0 +1,15 @@
+n = 11
+(
+    SELECT_LANG,
+    GET_NAME,
+    GET_CONTACT,
+    CLICK_LANG,
+    ALL_SETTINGS,
+    LANG_SETTINGS,
+    NAME_SETTINGS,
+    PHONE_SETTINGS,
+    GET_YEAR,
+    GET_MONTH,
+    GET_DAY,
+
+) = range(0, n)
