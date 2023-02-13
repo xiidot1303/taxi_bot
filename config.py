@@ -16,3 +16,7 @@ DB_PASSWORD = os.environ.get("DB_PASSWORD")
 
 # Telegram bot tokens
 BOT_API_TOKEN = os.environ.get("BOT_API_TOKEN")
+
+# scat API
+API_URL = os.environ.get("API_URL")
+API_KEY = os.environ.get("API_KEY")

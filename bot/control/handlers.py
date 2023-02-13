@@ -15,7 +15,7 @@ from telegram.ext import (
 from bot.resources.strings import lang_dict
 from bot.resources.conversationList import *
 from bot.bot import (
-    main, login, settings, orders
+    main, login, orders_history, settings
 )
 
 
@@ -49,20 +49,30 @@ settings_handler = ConversationHandler(
   
 )
 
+order_handler = ConversationHandler(
+    entry_points=[MessageHandler(Filters.text([lang_dict["let order"]]), main.order)],
+    states={
+        
+    },
+    fallbacks=[],
+    name='order',
+    persistent=True,
+)
+
 order_history_handler = ConversationHandler(
     entry_points=[MessageHandler(Filters.text(lang_dict["order history"]), main.order_history)],
     states={
         GET_YEAR: [
-            CallbackQueryHandler(orders.get_year_query),
-            CommandHandler("start", orders.get_year_query)
+            CallbackQueryHandler(orders_history.get_year_query),
+            CommandHandler("start", orders_history.get_year_query)
         ],
         GET_MONTH: [
-            CallbackQueryHandler(orders.get_month_query),
-            CommandHandler("start", orders.get_month_query)
+            CallbackQueryHandler(orders_history.get_month_query),
+            CommandHandler("start", orders_history.get_month_query)
         ],
         GET_DAY: [
-            CallbackQueryHandler(orders.get_day_query),
-            CommandHandler("start", orders.get_day_query)
+            CallbackQueryHandler(orders_history.get_day_query),
+            CommandHandler("start", orders_history.get_day_query)
         ],
     },
     fallbacks=[],

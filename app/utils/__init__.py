@@ -1,5 +1,7 @@
 from app.resources.strings import lang_dict
 from datetime import datetime, date, timedelta
+import requests
+import json
 
 def get_user_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -24,3 +26,11 @@ def today():
 def month_by_index(index):
     date = datetime(2022, int(index), 13)
     return date.strftime('%B')
+
+def send_request(url, data, type='get'):
+    if type == 'get':
+        response = json.loads(requests.get(url, params=data).content)
+    else:
+        response = json.loads(requests.post(url, data=data).content)
+
+    return response

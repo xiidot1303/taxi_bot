@@ -22,6 +22,9 @@ def settings(update, context):
     make_button_settings(update, context)
     return ALL_SETTINGS
 
+def order(update, context):
+    pass
+
 def order_history(update, context):
     bot_user = get_user_by_update(update)
     years = filter_years_of_client_orders(bot_user)

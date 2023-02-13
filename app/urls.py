@@ -6,6 +6,10 @@ from django.contrib.auth.views import (
     PasswordChangeView
 )
 
+from app.views import (
+    callback
+)
+
 urlpatterns = [
     # login
     path('accounts/login/', LoginView.as_view()),
@@ -15,6 +19,8 @@ urlpatterns = [
         template_name = 'registration/afterchanging.html'), name='password_change_done'),
     path('logout/', LogoutView.as_view(), name='logout'),
 
-
+    # api
+    path('cheque-info', callback.cheque_info),
+    # re_path(r'^cheque-info(?P<path>.*)$', callback.cheque_info),
 
 ]
