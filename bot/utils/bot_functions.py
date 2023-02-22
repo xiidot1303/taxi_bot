@@ -62,6 +62,17 @@ def bot_delete_message(update, context, message_id=None):
     except:
         return
 
+def bot_send_and_delete_message(update, context, text, reply_markup=None):
+    bot = context.bot
+    message = bot.send_message(
+        update.message.chat.id, 
+        text,
+        reply_markup=reply_markup,
+        parse_mode = ParseMode.HTML
+        )
+    bot.delete_message(update.message.chat.id, message.message_id)
+    return
+
 def bot_edit_message_text(update, context, text, msg_id=None):
     bot = context.bot
     if not msg_id:
@@ -87,10 +98,10 @@ def reply_keyboard_remove():
     return markup
 
 
-def inlinequeryresultarticle(title, description=None, product_id=None):
+def inlinequeryresultarticle(title, description=None, title_id=None):
     message_content = title
-    if product_id:
-        message_content = '{}<>?{}'.format(title, product_id)
+    if title_id:
+        message_content = '{}<>?{}'.format(title, title_id)
 
     article = InlineQueryResultArticle(
         id=str(uuid4()),

@@ -17,6 +17,7 @@ lang_dict = {
     ],
     "leave number": ["Telefon raqamni yuborish", "Оставить номер телефона"],
     "back": ["""🔙 Ortga""", """🔙 Назад"""],
+    "skip": ["""O'tkazish ⏭""", """Пропустить ⏭"""],
     "next": ["""Davom etish ➡️""", """Далее ➡️"""],
     "seller": ["""Sotuvchi 🛍""", """Продавцам 🛍"""],
     "buyer": ["""Xaridor 💵""", """Покупателям 💵"""],
@@ -97,11 +98,63 @@ lang_dict = {
 
     "order": ["Buyurtma", "Заказ"],
 
-    "": ["", ""],
+    "select address or location": [
+        "select address or location", 
+        "select address or location"],
 
-    "": ["", ""],
+    "search addresses": ["seach addresses", "search addresses"],
 
-    "": ["", ""],
+    "send location": ["send location", "send location"],
+
+    "select point a": ["select point a", "select point a"],
+
+    "select point b": ["", ""],
+
+    "city": ["", ""],
+
+    "not found": ["", ""],
+
+    "type house number": ["", ""],
+
+    "point a": ["", ""],
+    
+    "point b": ["", ""],
+
+    "confirm order": ["", ""],
+
+    "confirm": ["", ""],
+
+    "change point a": ["", ""],
+
+    "change point b": ["", ""],
+
+    "price": ["", ""],
+
+    "distance": ["", ""],
+
+    "invalid location": ["", ""],
+
+    "cancel order": ["", ""],
+
+    "order in process": ["", ""],
+
+    "your order is in moderation": ["", ""],
+
+    "car": ["", ""],
+
+    "number": ["", ""],
+
+    "arrival time": ["", ""],
+
+    "minute": ["", ""],
+
+    "driver": ["", ""],
+
+    "driver is here": ["", ""],
+
+    "order is in execution": ["", ""],
+
+    "your order is cancelled": ["", ""],
 
     "": ["", ""],
 

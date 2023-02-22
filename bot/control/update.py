@@ -4,7 +4,9 @@ from telegram.ext import Updater
 from bot.control.handlers import (
     login_handler,
     settings_handler, 
-    order_history_handler
+    order_history_handler,
+    order_handler,
+    search_handler,
     )
 from config import BOT_API_TOKEN, DEBUG
 
@@ -25,7 +27,8 @@ else:  # in development
 
 
 
-
+dp.add_handler(search_handler)
+dp.add_handler(order_handler)
 dp.add_handler(order_history_handler)
 dp.add_handler(settings_handler)
 dp.add_handler(login_handler)

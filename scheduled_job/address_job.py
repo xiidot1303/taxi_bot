@@ -4,7 +4,7 @@ from app.services.address_service import *
 def update_streets():
     for city in filter_cities():
         try:
-            streets_list = get_streets(city_id=city.city_id)
+            streets_list = get_streets_api(city_id=city.city_id)
             for street in streets_list:
                 get_or_create_street(street, city)
         except:
@@ -12,7 +12,7 @@ def update_streets():
 
 def update_cities():
     try:
-        cities_list = get_services()
+        cities_list = get_services_api()
         for city in cities_list:
             get_or_create_city(city['name'], city['city_id'])   
     except:

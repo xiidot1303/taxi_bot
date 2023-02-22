@@ -15,7 +15,7 @@ from telegram.ext import (
 from bot.resources.strings import lang_dict
 from bot.resources.conversationList import *
 from bot.bot import (
-    main, login, orders_history, settings
+    main, login, orders_history, settings, order, search
 )
 
 
@@ -50,9 +50,27 @@ settings_handler = ConversationHandler(
 )
 
 order_handler = ConversationHandler(
-    entry_points=[MessageHandler(Filters.text([lang_dict["let order"]]), main.order)],
+    entry_points=[MessageHandler(Filters.text(lang_dict["let order"]), main.ordering)],
     states={
-        
+        GET_POINT_A: [
+            CallbackQueryHandler(order.get_point_a_query),
+            CommandHandler("start", order.get_point_a),
+            MessageHandler(Filters.text, order.get_point_a),
+            MessageHandler(Filters.location, order.get_point_a),
+            ],
+        GET_POINT_A_HOUSE: [MessageHandler(Filters.text, order.get_point_a_house)],
+        GET_POINT_B: [
+            CallbackQueryHandler(order.get_point_b_query),
+            CommandHandler("start", order.get_point_b),
+            MessageHandler(Filters.text, order.get_point_b),
+            MessageHandler(Filters.location, order.get_point_b),
+            ],
+        GET_POINT_B_HOUSE: [MessageHandler(Filters.text, order.get_point_b_house)],
+        CONFIRM_ORDER: [MessageHandler(Filters.text, order.confirm_order)],
+        ORDER_PROCESS: [
+            CallbackQueryHandler(order.order_process),
+            MessageHandler(Filters.text, order.order_process)
+        ],
     },
     fallbacks=[],
     name='order',
@@ -79,3 +97,5 @@ order_history_handler = ConversationHandler(
     name="order_history",
     persistent=True,
 )
+
+search_handler = InlineQueryHandler(search.get_inline_query)

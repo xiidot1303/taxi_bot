@@ -27,6 +27,22 @@ class Cheque(models.Model):
     discount = models.CharField(max_length = 255, null=True, blank=True)
     datetime = models.DateTimeField(db_index=True, null=True, auto_now_add=True, blank=True)
 
+class Order(models.Model):
+    user = models.ForeignKey('bot.Bot_user', null=True, blank=True, on_delete=models.SET_NULL)
+    uuid = models.CharField(null=True, blank=True, max_length=255)
+    status = models.IntegerField(null=True, blank=True)
+    src_street = models.CharField(null=True, blank=True, max_length=255)
+    src_house = models.CharField(null=True, blank=True, max_length=255, default='')
+    dst_street = models.CharField(null=True, blank=True, max_length=255)
+    dst_house = models.CharField(null=True, blank=True, max_length=255, default='')
+    src_lat = models.CharField(null=True, blank=True, max_length=255)
+    src_lon = models.CharField(null=True, blank=True, max_length=255)
+    dst_lon = models.CharField(null=True, blank=True, max_length=255)
+    dst_lat = models.CharField(null=True, blank=True, max_length=255)
+    service_id = models.IntegerField(null=True, blank=True)
+    start_time = models.DateTimeField(db_index=True, null=True, auto_now_add=True, blank=True)
+    end_time = models.DateTimeField(null=True, blank=True)
+
 class City(models.Model):
     title = models.CharField(max_length = 255, null=True, blank=False)
     city_id = models.IntegerField(null=True, blank=False)

@@ -14,7 +14,11 @@ class CityAdmin(admin.ModelAdmin):
 class StreetAdmin(admin.ModelAdmin):
     list_display = ['title', 'city']
 
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ['user', 'uuid', 'status']
+
 admin.site.register(Language, LanguageAdmin)
 admin.site.register(Cheque, ChequeAdmin)
 admin.site.register(City, CityAdmin)
 admin.site.register(Street, StreetAdmin)
+admin.site.register(Order, OrderAdmin)

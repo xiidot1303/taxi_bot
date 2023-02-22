@@ -13,3 +13,13 @@ def filter_cities():
 def get_or_create_street(title, city):
     obj = Street.objects.get_or_create(title=title, city=city)
     return obj
+
+def get_street_by_pk(pk):
+    obj = get_object_or_404(Street, pk=pk)
+    return obj
+
+def filter_streets_by_title_regex(text_en, text_ru, text):
+    streets = Street.objects.filter(
+        Q(title__iregex=text_en) | Q(title__iregex=text_ru) | Q(title__icontains=text)
+        )
+    return streets

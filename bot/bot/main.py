@@ -1,4 +1,5 @@
 from bot.bot import *
+from bot.bot.order import to_the_get_point_a as _to_the_get_point_a
 
 def start(update, context):
     if is_group(update):
@@ -22,8 +23,9 @@ def settings(update, context):
     make_button_settings(update, context)
     return ALL_SETTINGS
 
-def order(update, context):
-    pass
+def ordering(update, context):
+    context.user_data['next'] = GET_POINT_B
+    return _to_the_get_point_a(update, context)
 
 def order_history(update, context):
     bot_user = get_user_by_update(update)
