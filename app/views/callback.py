@@ -12,8 +12,8 @@ from bot.services import notification_service
 @api_view(['GET', 'POST'])
 def cheque_info(request):
     if request.method == 'GET':
-        if request.GET['phonenum'] == '+998901385003':
-            print(request.GET)
+        
+        print(request.GET)
         
         serializer = ChequeSerializer(data=request.GET)
         
