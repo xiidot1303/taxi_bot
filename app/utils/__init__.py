@@ -1,4 +1,3 @@
-from app.resources.strings import lang_dict
 from datetime import datetime, date, timedelta
 import requests
 import json
