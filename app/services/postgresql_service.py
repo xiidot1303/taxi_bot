@@ -21,8 +21,8 @@ def get_phone_id(phone):
     con = connect_db()
     cursor = con.cursor()
     cursor.execute(f"""SELECT id FROM phone WHERE phonenum='{phone}';""")
-    result = cursor.fetchall()
-    phone_id = result[0][0]
+    result = cursor.fetchone()
+    phone_id = result[0] if result else None
     con.close()
     return phone_id
 

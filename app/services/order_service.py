@@ -4,6 +4,8 @@ from app.services.postgresql_service import *
 def filter_years_of_client_orders(bot_user):
     client_phone = bot_user.phone
     phone_id = get_phone_id(client_phone)
+    if not phone_id:
+        return None
     years = get_years_of_order(phone_id)
     return sorted(list(set(years)))
 
