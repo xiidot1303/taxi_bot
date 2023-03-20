@@ -54,7 +54,7 @@ def send_order_status(phone, data):
 
         if not order:
             markup = None
-        send_newsletter(user.user_id, text, markup)
+        send_newsletter(bot, user.user_id, text, markup)
         
         return True
     else:

@@ -13,8 +13,6 @@ from bot.services import notification_service
 def cheque_info(request):
     if request.method == 'GET':
         
-        print(request.GET)
-        
         serializer = ChequeSerializer(data=request.GET)
         
         if serializer.is_valid():
