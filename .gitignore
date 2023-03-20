@@ -8,6 +8,7 @@ bot/migrations
 __init__.py
 files
 test_api.py
+test_psql.py
 staticfiles
 persistencebot
 app/static/assets/*
@@ -17,3 +18,4 @@ app/static/assets/*
 !app/services/__init__.py
 !bot/services/__init__.py
 !bot/utils/__init__.py
+!bot/bot/__init__.py

@@ -35,7 +35,8 @@ def order_history(update, context):
         text = get_word('select year of order', update)
         msg = bot_send_message(update, context, text, reply_markup=reply_keyboard_remove())
         bot_delete_message(update, context, msg.message_id)
-        bot_send_message(update, context, text, reply_markup=reply_markup)
+        msg=bot_send_message(update, context, text, reply_markup=reply_markup)
+        context.user_data['last_msg'] = msg
         return GET_YEAR
     else:
         text = get_word('not available orders yet', update)

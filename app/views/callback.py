@@ -33,7 +33,7 @@ def cheque_info(request):
                 notification_service.send_cheque(
                     phone, data['car_phone'], data['car_firstname'], 
                     data['brand'] or '', data['model'] or '', data['color'] or '', 
-                    data['autonum'] or '', data['amount'], 
+                    data['autonum'] or '', data['amount'], data['uuid']
                 )
                 change_order_status_by_uuid(uuid, data['status_code'])
                 return Response(status=status.HTTP_200_OK)

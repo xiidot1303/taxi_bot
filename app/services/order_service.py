@@ -1,19 +1,30 @@
 from app.models import Order
+from app.services.postgresql_service import *
 
 def filter_years_of_client_orders(bot_user):
     client_phone = bot_user.phone
-    return [2022]
+    phone_id = get_phone_id(client_phone)
+    years = get_years_of_order(phone_id)
+    return sorted(list(set(years)))
 
 def filter_months_of_client_orders(bot_user, year):
     client_phone = bot_user.phone
-    return [3,5]
+    phone_id = get_phone_id(client_phone)
+    months = get_months_of_order(phone_id, year)
+    return sorted(list(set(months)))
 
 def filter_days_of_client_orders(bot_user, year, month):
     client_phone = bot_user.phone
-    return list(range(33))
+    phone_id = get_phone_id(client_phone)
+    days = get_days_of_order(phone_id, year, month)
+    return sorted(list(set(days)))
 
 def filter_orders_by_date(bot_user, day, month, year):
-    return [1, 2]
+    client_phone = bot_user.phone
+    phone_id = get_phone_id(client_phone)
+    orders = get_orders_by_date(phone_id, year, month, day)
+    return orders
+
 
 def create_order(
         bot_user, uuid, src, dst, 

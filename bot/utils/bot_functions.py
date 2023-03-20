@@ -39,19 +39,50 @@ def bot_send_message(update, context, text, reply_markup=None):
         )
     return message
 
-def send_newsletter(chat_id, text, reply_markup=None, pin_message=False, bot = Bot(BOT_API_TOKEN)):
+
+def send_newsletter(bot, chat_id, text, photo=None, video=None, document=None, reply_markup=None, pin_message=False):
     try:
-    # if True:
-        message = bot.send_message(
-            chat_id=chat_id,
-            text=text,
+        if not (photo or video or document):
+            # send text message
+            message = bot.send_message(
+                chat_id=chat_id,
+                text=text,
+                reply_markup=reply_markup,
+                parse_mode=ParseMode.HTML
+            )
+
+        # send photo
+        message = bot.send_photo(
+            chat_id,
+            photo,
+            caption=text,
             reply_markup=reply_markup,
-            parse_mode=ParseMode.HTML
+            parse_mode = ParseMode.HTML,
         )
+
+        # send video
+        message = bot.send_video(
+            chat_id,
+            video,
+            caption=text,
+            reply_markup=reply_markup,
+            parse_mode = ParseMode.HTML,
+        )
+
+        # send document
+        message = bot.send_document(
+            chat_id,
+            document,
+            caption=text,
+            reply_markup=reply_markup,
+            parse_mode = ParseMode.HTML,
+        )
+
         if pin_message:
             bot.pin_chat_message(chat_id=chat_id, message_id=message.message_id)
     except:
         w=0
+
 
 def bot_delete_message(update, context, message_id=None):
     if not message_id:

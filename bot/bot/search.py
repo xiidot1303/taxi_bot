@@ -42,7 +42,7 @@ def regexing_en(text):
 
 def regexing_ru(text):
     list_couples = [
-        'ао', 'её', 'ыи', 'юу', 'щш'
+        'ао', 'её', 'ыи', 'юу', 'щш', ['л', 'ль']
     ]
 
     for i in list_couples:

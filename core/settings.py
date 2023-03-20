@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ALLOWED_HOSTS
 INSTALLED_APPS = [
     'app.apps.app',
     'bot',
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -130,7 +131,7 @@ SESSION_SAVE_EVERY_REQUEST = True
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
 TIME_ZONE = 'Asia/Tashkent'
 

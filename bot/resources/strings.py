@@ -62,13 +62,25 @@ lang_dict = {
 
     "order history": ["Buyurtmalar tarixi 📑", "История заказов 📑"],
 
-    "select year of order": ["", ""],
+    "select year of order": [
+        "🗓 Buyurtma yilini tanlang", 
+        "🗓 Выберите год заказа"
+        ],
     
-    "select month of order": ["", ""],
+    "select month of order": [
+        "📆 Buyurtma oyini tanlang\n\n<i>Yil: {}</i>", 
+        "📆 Выберите месяц заказа\n\n<i>Год: {}</i>"
+        ],
 
-    "select day of order": ["", ""],
+    "select day of order": [
+        "📅 Buyurtma kunini tanlang\n\n<i>Yil: {}\nOy: {}</i>", 
+        "📅 Выберите день заказа\n\n<i>Год: {}\nМесяц: {}</i>"
+        ],
 
-    "not available orders yet": ["", ""],
+    "not available orders yet": [
+        "🆓 Hozircha hech qanday buyurtma mavjud emas", 
+        "🆓 Пока нет доступных заказов"
+        ],
 
     "january": ["Yanvar", "Январь"],
 
@@ -99,70 +111,96 @@ lang_dict = {
     "order": ["Buyurtma", "Заказ"],
 
     "select address or location": [
-        "select address or location", 
-        "select address or location"],
+        "🔘 <u>Manzil tanlash 🔎</u> tugamasini bosing va manzilni kiriting, natijani bosing\n<b>YOKI</b>\n📍 Lokatsiya yuboring", 
+        "🔘 Нажмите <u>Выбрать адрес 🔎</u> и введите адрес, нажмите результат\n<b>ИЛИ</b>\n📍 Отправьте локация"],
 
-    "search addresses": ["seach addresses", "search addresses"],
+    "search addresses": ["Manzil tanlash 🔎", "Выбрать адрес 🔎"],
 
-    "send location": ["send location", "send location"],
+    "send location": ["📍 Lokatsiya yuborish", "📍 Отправить местоположение"],
 
-    "select point a": ["select point a", "select point a"],
+    "select point a": ["<b>🅰️ Manzilni tanlang</b>", "<b>Выберите точку 🅰️</b>"],
 
-    "select point b": ["", ""],
+    "select point b": ["<b>🅱️ Manzilni tanlang</b>", "<b>Выберите точку 🅱️</b>"],
 
-    "city": ["", ""],
+    "city": ["Shahar", "Город"],
 
-    "not found": ["", ""],
+    "not found": ["🙅‍♂️ Mavjud emas", "🙅‍♂️ Не найдено"],
 
-    "type house number": ["", ""],
+    "type house number": ["🏘 Uy raqamini kiriting", "🏘 Введите номер дома"],
 
-    "point a": ["", ""],
+    "point a": ["🅰️ Manzil", "🅰️ Точка"],
     
-    "point b": ["", ""],
+    "point b": ["🅱️ Manzil", "🅱️ Точка"],
 
-    "confirm order": ["", ""],
+    "confirm order": [
+        "☑️ Ma'lumotlar to'g'ri ekanini tekshiring va <u>Tasdiqlash ✅</u> tugamasini bosing", 
+        "☑️ Проверьте информации и нажмите кнопку <u>Подтвердить ✅</u>"
+        ],
 
-    "confirm": ["", ""],
+    "confirm": ["Tasdiqlash ✅", "Подтвердить ✅"],
 
-    "change point a": ["", ""],
+    "change point a": ["🅰️ Manzilni o'zgartirish", "Изменить точку 🅰️"],
 
-    "change point b": ["", ""],
+    "change point b": ["🅱️ Manzilni o'zgartirish", "Изменить точку 🅱️"],
 
-    "price": ["", ""],
+    "price": ["💰 Narx", "💰 Цена"],
 
-    "distance": ["", ""],
+    "distance": ["🆎 Masofa", "🆎 Дистанция"],
 
-    "invalid location": ["", ""],
+    "invalid location": ["⛔️ Lokatsiya xato", "⛔️ Недопустимое местоположение"],
 
-    "cancel order": ["", ""],
+    "cancel order": ["❌ Buyurtmani bekor qilish", "❌ Отменить заказ"],
 
-    "order in process": ["", ""],
+    "order in process": ["🆗 Buyurtma jarayonda", "🆗 Заказ в процессе"],
 
-    "your order is in moderation": ["", ""],
+    "your order is in moderation": [
+        "✔️ Buyurtmangiz moderatsiyada", 
+        "✔️ Ваш заказ на модерации"
+        ],
 
-    "car": ["", ""],
+    "car": ["🚖 Mashina", "🚖 Машина"],
 
-    "number": ["", ""],
+    "number": ["🔢 Raqami", "🔢 Номер"],
 
-    "arrival time": ["", ""],
+    "arrival time": ["⌛️ Kelish vaqti", "⌛️ Время подъезда"],
 
-    "minute": ["", ""],
+    "minute": ["minut", "минут"],
 
-    "driver": ["", ""],
+    "driver": ["🚕 Haydovchi", "🚕 Водитель"],
 
-    "driver is here": ["", ""],
+    "driver is here": [
+        "❕ Haydovchi yetib keldi", 
+        "❕Водитель прибыл"
+        ],
 
-    "order is in execution": ["", ""],
+    "order is in execution": [
+        "✅ Buyurtma amalga oshmoqda", 
+        "✅ Заказ находится в исполнении"
+        ],
 
-    "your order is cancelled": ["", ""],
+    "your order is cancelled": [
+        "❌ Buyurtmangiz bekor qilindi", 
+        "❌ Ваш заказ отменен"],
 
-    "": ["", ""],
+    "amount": ["💲 Miqdor", "💲 Сумма"],
 
-    "": ["", ""],
+    "meter": ["m", "м"],
 
-    "": ["", ""],
+    "standtime": ["🚦 Vaqt", "🚦 Стоянка"],
 
-    "": ["", ""],
+    "min.": ["min.", "мин."],
+
+    "sek.": ["sek.", "сек."],
+
+    "waittime": ["⏳ Kutish vaqti", "⏳ Время ожидания"],
+
+    "driver info": ["👨‍✈️ Haydovchi haqida ma'lumot", "👨‍✈️ Информация о водителе"],
+
+    "name": ["Ism", "Имя"],
+
+    "phone": ["📞 Telefon", "📞 Телефон"],
+
+    "loading": ["Yuklanmoqda... ⏳", "Загрузка... ⏳"],
 
     "": ["", ""],
 
