@@ -18,7 +18,7 @@ def send_cheque(phone, car_phone, car_firstname, brand, model, color, autonum, a
             ]])
         else:
             markup = None
-        send_newsletter(user.user_id, text, markup)
+        send_newsletter(bot, user.user_id, text, reply_markup=markup)
         return True
     else:
         return False
@@ -54,7 +54,7 @@ def send_order_status(phone, data):
 
         if not order:
             markup = None
-        send_newsletter(bot, user.user_id, text, markup)
+        send_newsletter(bot, user.user_id, text, reply_markup=markup)
         
         return True
     else:
