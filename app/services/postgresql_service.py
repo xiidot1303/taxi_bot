@@ -71,6 +71,8 @@ def get_orders_by_date(phone_id, year, month, day):
 #     return result
 
 def get_car_info(auto_id):
+    if not auto_id:
+        return None
     con = connect_db()
     cursor = con.cursor()
     cursor.execute(f"SELECT autonum, color, brand, model, lastname, firstname, phone FROM auto WHERE id={auto_id}")
