@@ -57,6 +57,7 @@ def create_order_api(phone, token):
     url = api_url + '/order'
     data['phone'] = phone
     data['token'] = token
+    data['moderation_required'] = 'no'
     # set comment  by debug mode
     if DEBUG:
         data['comment'] = 'TEST Гайрат акага'
