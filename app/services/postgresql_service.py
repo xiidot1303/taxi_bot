@@ -29,7 +29,7 @@ def get_phone_id(phone):
 def get_years_of_order(phone_id):
     con = connect_db()
     cursor = con.cursor()
-    cursor.execute(f"""SELECT EXTRACT(YEAR FROM starttime) AS month_index FROM "order" WHERE phone_id = {phone_id} AND status=100;""")
+    cursor.execute(f"""SELECT EXTRACT(YEAR FROM endtime) AS month_index FROM "order" WHERE phone_id = {phone_id} AND status=100;""")
     result = cursor.fetchall()
     years = [int(i[0]) for i in result]
     con.close()
@@ -39,7 +39,7 @@ def get_years_of_order(phone_id):
 def get_months_of_order(phone_id, year):
     con = connect_db()
     cursor = con.cursor()
-    cursor.execute(f"""SELECT EXTRACT(MONTH FROM starttime) AS month_index FROM "order" WHERE EXTRACT(YEAR FROM starttime) = {year} AND phone_id = {phone_id} AND status=100;""")
+    cursor.execute(f"""SELECT EXTRACT(MONTH FROM endtime) AS month_index FROM "order" WHERE EXTRACT(YEAR FROM endtime) = {year} AND phone_id = {phone_id} AND status=100;""")
     result = cursor.fetchall()
     months = [int(i[0]) for i in result]
     con.close()
@@ -48,7 +48,7 @@ def get_months_of_order(phone_id, year):
 def get_days_of_order(phone_id, year, month):
     con = connect_db()
     cursor = con.cursor()
-    cursor.execute(f"""SELECT EXTRACT(DAY FROM starttime) AS month_index FROM "order" WHERE EXTRACT(YEAR FROM starttime) = {year} AND EXTRACT(MONTH FROM starttime) = {month} AND phone_id = {phone_id} AND status=100;""")
+    cursor.execute(f"""SELECT EXTRACT(DAY FROM endtime) AS month_index FROM "order" WHERE EXTRACT(YEAR FROM endtime) = {year} AND EXTRACT(MONTH FROM endtime) = {month} AND phone_id = {phone_id} AND status=100;""")
     result = cursor.fetchall()
     days = [int(i[0]) for i in result]
     con.close()
@@ -57,7 +57,7 @@ def get_days_of_order(phone_id, year, month):
 def get_orders_by_date(phone_id, year, month, day):
     con = connect_db()
     cursor = con.cursor()
-    cursor.execute(f"""SELECT src, dst, starttime, endtime, executor_id, amount, distance, standtime, waittime, street, house, dststreet, dsthouse FROM "order" WHERE EXTRACT(YEAR FROM starttime) = {year} AND EXTRACT(MONTH FROM starttime) = {month} AND EXTRACT(DAY FROM starttime) = {day} AND phone_id = {phone_id} AND status=100;""")
+    cursor.execute(f"""SELECT src, dst, starttime, endtime, executor_id, amount, distance, standtime, waittime, street, house, dststreet, dsthouse FROM "order" WHERE EXTRACT(YEAR FROM endtime) = {year} AND EXTRACT(MONTH FROM endtime) = {month} AND EXTRACT(DAY FROM endtime) = {day} AND phone_id = {phone_id} AND status=100;""")
     result = cursor.fetchall()
     con.close()
     return result
