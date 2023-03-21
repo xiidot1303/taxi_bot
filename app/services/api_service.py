@@ -74,3 +74,9 @@ def cancel_order_api(uuid):
     data['uuid'] = uuid
     response = send_request(url, data, 'post')
     return True if response['status'] == 'DONE' else False
+
+def client_bonus_count(phone):
+    url = api_url + '/client/bonus/count'
+    data['phone'] = phone
+    response = send_request(url, data)
+    return response['response']['bonus']

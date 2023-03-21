@@ -42,3 +42,9 @@ def order_history(update, context):
         text = get_word('not available orders yet', update)
         update_message_reply_text(update, text)
         main_menu(update, context)
+
+def bonus(update, context):
+    phone = get_object_by_update(update).phone
+    balance = client_bonus_count(phone)
+    text = get_word('your balance', update).format(balance)
+    update_message_reply_text(update, text)

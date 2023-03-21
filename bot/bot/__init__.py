@@ -22,6 +22,7 @@ def main_menu(update, context):
     keyboard = [
         [get_word('let order', update)],
         [get_word('order history', update)],
+        [get_word('balance', update)],
         [get_word('settings', update)],
     ]
 

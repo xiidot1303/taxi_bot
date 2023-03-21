@@ -99,3 +99,4 @@ order_history_handler = ConversationHandler(
 )
 
 search_handler = InlineQueryHandler(search.get_inline_query)
+bonus_handler = MessageHandler(Filters.text(lang_dict['balance']), main.bonus)

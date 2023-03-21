@@ -7,6 +7,7 @@ from bot.control.handlers import (
     order_history_handler,
     order_handler,
     search_handler,
+    bonus_handler,
     )
 from config import BOT_API_TOKEN, DEBUG
 
@@ -27,6 +28,7 @@ else:  # in development
 
 
 
+dp.add_handler(bonus_handler)
 dp.add_handler(search_handler)
 dp.add_handler(order_handler)
 dp.add_handler(order_history_handler)
