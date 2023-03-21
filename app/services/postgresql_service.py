@@ -62,6 +62,14 @@ def get_orders_by_date(phone_id, year, month, day):
     con.close()
     return result
 
+def get_order_by_id(id):
+    con = connect_db()
+    cursor = con.cursor()
+    cursor.execute(f"""SELECT src, dst, starttime, endtime, executor_id, amount, distance, standtime, waittime, street, house, dststreet, dsthouse FROM "order" WHERE id={id};""")
+    result = cursor.fetchone()
+    con.close()
+    return result
+
 # def get_auto_id(executor_id):
 #     con = connect_db()
 #     cursor = con.cursor()
