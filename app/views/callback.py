@@ -19,11 +19,15 @@ def cheque_info(request):
             data = serializer.initial_data
             phone = data['phonenum']
             uuid = data['uuid']
+            order_id = data['id']
             # check status and send message
             if data['status_code'] in ['80', '95', '10', '11', '4']:
+                if data['status_code'] == '80':
+                    change_order_status_by_uuid(uuid, order_id, data['status_code'])
+                else:
+                    change_order_status_by_order_id(order_id, data['status_code'])
                 # send notification
                 notification_service.send_order_status(phone, data)
-                change_order_status_by_uuid(uuid, data['status_code'])
 
             elif data['status_code'] == '100':
                 serializer.save()
@@ -31,9 +35,9 @@ def cheque_info(request):
                 notification_service.send_cheque(
                     phone, data['car_phone'], data['car_firstname'], 
                     data['brand'] or '', data['model'] or '', data['color'] or '', 
-                    data['autonum'] or '', data['amount'], data['uuid']
+                    data['autonum'] or '', data['amount'], data['id']
                 )
-                change_order_status_by_uuid(uuid, data['status_code'])
+                change_order_status_by_order_id(order_id, data['status_code'])
                 return Response(status=status.HTTP_200_OK)
 
             return Response(status=status.HTTP_202_ACCEPTED)

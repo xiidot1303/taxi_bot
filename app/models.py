@@ -28,6 +28,7 @@ class Cheque(models.Model):
     datetime = models.DateTimeField(db_index=True, null=True, auto_now_add=True, blank=True)
 
 class Order(models.Model):
+    order_id = models.CharField(null=True, blank=True, max_length=64)
     user = models.ForeignKey('bot.Bot_user', null=True, blank=True, on_delete=models.SET_NULL)
     uuid = models.CharField(null=True, blank=True, max_length=255)
     status = models.IntegerField(null=True, blank=True)

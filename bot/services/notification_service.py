@@ -2,12 +2,12 @@ from bot.utils.bot_functions import *
 from bot.services import filter_users_by_phone
 from bot.services import string_service
 from bot.services.language_service import get_word
-from app.services.order_service import get_order_by_uuid_without_404
+from app.services.order_service import get_order_by_uuid_without_404, get_order_by_order_id_without_404
 
-def send_cheque(phone, car_phone, car_firstname, brand, model, color, autonum, amount, uuid):
+def send_cheque(phone, car_phone, car_firstname, brand, model, color, autonum, amount, order_id):
     if users := filter_users_by_phone(phone):
         user = users[0]
-        order = get_order_by_uuid_without_404(uuid)
+        order = get_order_by_order_id_without_404(order_id)
         text = string_service.cheque_info(user.user_id, car_phone, car_firstname, brand, model, color, autonum, amount)
         if order:
             markup = InlineKeyboardMarkup([[
@@ -27,7 +27,7 @@ def send_order_status(phone, data):
     status_code = int(data['status_code'])
     if users := filter_users_by_phone(phone):
         user = users[0]
-        order = get_order_by_uuid_without_404(data['uuid'])
+        order = get_order_by_order_id_without_404(data['id'])
         markup = None
         if status_code == 80:
             text = get_word('your order is in moderation', chat_id=user.user_id)
