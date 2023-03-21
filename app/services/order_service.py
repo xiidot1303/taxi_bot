@@ -72,7 +72,7 @@ def get_order_by_uuid_without_404(uuid):
     return None
 
 def get_order_by_order_id_without_404(order_id):
-    if orders := Order.objects.filter(order_id=order_id):
+    if orders := Order.objects.filter(order_id=str(order_id)):
         order = orders[0]
         return order
     return None
