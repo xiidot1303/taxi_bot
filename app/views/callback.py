@@ -22,12 +22,12 @@ def cheque_info(request):
             order_id = data['id']
             # check status and send message
             if data['status_code'] in ['80', '95', '10', '11', '4']:
-                if data['status_code'] == '10':
+                if data['status_code'] == '1':
                     change_order_status_by_uuid(uuid, order_id, data['status_code'])
                 else:
                     change_order_status_by_order_id(order_id, data['status_code'])
-                # send notification
-                notification_service.send_order_status(phone, data)
+                    # send notification
+                    notification_service.send_order_status(phone, data)
 
             elif data['status_code'] == '100':
                 serializer.save()

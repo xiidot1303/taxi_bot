@@ -273,7 +273,7 @@ def order_process(update, context):
         # get new order
         order = get_order_by_id(order.id)
         # check, can cancel order
-        if order.status in [80, 10, 11, None]:
+        if order.status in [80, 10, 11, 1]:
             # cancel order
             cancel_order_api(order.uuid)
             return
