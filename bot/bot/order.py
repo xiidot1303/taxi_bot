@@ -69,7 +69,6 @@ def _to_the_order_process(update, context):
     token = context.user_data['token']
     # get bot user
     bot_user = get_object_by_update(update)
-    print(data)
     # create order api
     status, uuid_or_msg = create_order_api(bot_user.phone, token)
     # check status, if error send message
