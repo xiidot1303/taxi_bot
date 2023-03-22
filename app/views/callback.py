@@ -33,9 +33,7 @@ def cheque_info(request):
                 serializer.save()
                 # send notification
                 notification_service.send_cheque(
-                    phone, data['car_phone'], data['car_firstname'], 
-                    data['brand'] or '', data['model'] or '', data['color'] or '', 
-                    data['autonum'] or '', data['amount'], data['id']
+                    phone, data['id']
                 )
                 change_order_status_by_order_id(order_id, data['status_code'])
                 return Response(status=status.HTTP_200_OK)
