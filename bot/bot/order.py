@@ -117,10 +117,10 @@ def get_point_a(update, context):
         # remove inline keyboard from last message
         remove_inline_keyboards_from_last_msg(update, context)
         # check, is coordinates in available regions
-        if not region_by_coordinates_api(lat, lon):
-            text = get_word('invalid location', update)
-            bot_send_message(update, context, text)
-            return to_the_get_point_a(update, context)
+        # if not region_by_coordinates_api(lat, lon):
+        #     text = get_word('invalid location', update)
+        #     bot_send_message(update, context, text)
+        #     return to_the_get_point_a(update, context)
         # get address by coordinates
         address = get_address_by_coordinates(lat, lon)
         # save data to user_data
@@ -200,10 +200,10 @@ def get_point_b(update, context):
         # remove inline keyboard from last messgae
         remove_inline_keyboards_from_last_msg(update, context)
         # check, is coordinates in available regions
-        if not region_by_coordinates_api(lat, lon):
-            text = get_word('invalid location', update)
-            bot_send_message(update, context, text)
-            return _to_the_get_point_b(update, context)
+        # if not region_by_coordinates_api(lat, lon):
+        #     text = get_word('invalid location', update)
+        #     bot_send_message(update, context, text)
+        #     return _to_the_get_point_b(update, context)
         # get address by coordinates
         address = get_address_by_coordinates(lat, lon)
         # save data to user_data
