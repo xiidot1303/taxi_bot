@@ -118,9 +118,9 @@ lang_dict = {
 
     "send location": ["📍 Lokatsiya yuborish", "📍 Отправить местоположение"],
 
-    "select point a": ["<b>🅰️ Manzilni tanlang</b>", "<b>Выберите точку 🅰️</b>"],
+    "select point a": ["<b>Manzilingizni kiriting 🅰️</b>", "<b>Выберите свой адрес 🅰️</b>"],
 
-    "select point b": ["<b>🅱️ Manzilni tanlang</b>", "<b>Выберите точку 🅱️</b>"],
+    "select point b": ["<b>Borish manzilingizni kiriting 🅱️</b>", "<b>Выберите точку поездки 🅱️</b>"],
 
     "city": ["Shahar", "Город"],
 
@@ -128,9 +128,9 @@ lang_dict = {
 
     "type house number": ["🏘 Uy raqamini kiriting", "🏘 Введите номер дома"],
 
-    "point a": ["🅰️ Manzil", "🅰️ Точка"],
+    "point a": ["🅰️ Qayerdan", "🅰️ Откуда"],
     
-    "point b": ["🅱️ Manzil", "🅱️ Точка"],
+    "point b": ["🅱️ Qayerga", "🅱️ Куда"],
 
     "confirm order": [
         "☑️ Ma'lumotlar to'g'ri ekanini tekshiring va <u>Tasdiqlash ✅</u> tugamasini bosing", 
@@ -139,9 +139,9 @@ lang_dict = {
 
     "confirm": ["Tasdiqlash ✅", "Подтвердить ✅"],
 
-    "change point a": ["🅰️ Manzilni o'zgartirish", "Изменить точку 🅰️"],
+    "change point a": ["🅰️ O'z manzilingizni o'zgartirish", "Изменить свой адрес 🅰️"],
 
-    "change point b": ["🅱️ Manzilni o'zgartirish", "Изменить точку 🅱️"],
+    "change point b": ["🅱️ Borish manzilingizni o'zgartirish", "Изменить точку поездки 🅱️"],
 
     "price": ["💰 Narx", "💰 Цена"],
 
