@@ -148,7 +148,8 @@ def get_point_a(update, context):
             context.user_data['src'] = 'address'
             context.user_data['src_street'] = street.title
             context.user_data['service_id'] = street.city.city_id
-            return _to_the_get_point_a_house(update, context)
+            # return _to_the_get_point_a_house(update, context)
+            return _to_the_confirm_order(update, context)
         except Exception as ex:
             print(ex)
             bot_delete_message(update, context)

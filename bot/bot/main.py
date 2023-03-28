@@ -24,7 +24,11 @@ def settings(update, context):
     return ALL_SETTINGS
 
 def ordering(update, context):
-    context.user_data['next'] = GET_POINT_B
+    context.user_data['next'] = CONFIRM_ORDER
+    context.user_data['dst'] = ''
+    context.user_data['dst_street'] = ''
+    context.user_data['dst_house'] = ''
+    context.user_data['src_house'] = ''
     return _to_the_get_point_a(update, context)
 
 def order_history(update, context):

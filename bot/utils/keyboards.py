@@ -76,6 +76,12 @@ def selecting_address_keyboard(update):
     inline_buttons = _inline_footer_buttons(update, inline_buttons, main_menu=True)
     return InlineKeyboardMarkup(inline_buttons) if inline_buttons else None
 
+def request_location_keyboard(update):
+    buttons = [[
+        KeyboardButton(get_word('send location', update), request_location=True)
+    ]]
+    return ReplyKeyboardMarkup(buttons, resize_keyboard=True, one_time_keyboard=True)
+
 def selecting_address_with_skip_keyboard(update):
     inline_buttons = [
         [InlineKeyboardButton(
@@ -101,7 +107,7 @@ def selecting_address_house_keyboard(update):
 def confirm_order_keyboard(update):
     buttons = [
         [get_word('confirm', update)],
-        [get_word('change point a', update), get_word('change point b', update)],
+        [get_word('change point a', update)],
         [get_word('main menu', update)]
     ]
     return ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True)

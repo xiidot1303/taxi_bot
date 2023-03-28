@@ -128,7 +128,7 @@ lang_dict = {
 
     "type house number": ["🏘 Uy raqamini kiriting", "🏘 Введите номер дома"],
 
-    "point a": ["🅰️ Qayerdan", "🅰️ Откуда"],
+    "point a": ["🅰️ Manzil", "🅰️ Адрес"],
     
     "point b": ["🅱️ Qayerga", "🅱️ Куда"],
 
@@ -139,7 +139,7 @@ lang_dict = {
 
     "confirm": ["Tasdiqlash ✅", "Подтвердить ✅"],
 
-    "change point a": ["🅰️ O'z manzilingizni o'zgartirish", "Изменить свой адрес 🅰️"],
+    "change point a": ["🅰️ Manzilni o'zgartirish", "Изменить адрес 🅰️"],
 
     "change point b": ["🅱️ Borish manzilingizni o'zgartirish", "Изменить точку поездки 🅱️"],
 

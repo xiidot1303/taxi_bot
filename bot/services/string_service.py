@@ -83,17 +83,11 @@ def address_description_for_query_string(update, city):
     return description
 
 def order_details_before_confirmation_string(update, point_a, house_a, point_b, house_b, price, distance):
-    text = "{point_a_text}: {point_a}, {house_a}\n{point_b_text}: {point_b}, {house_b}\n{price_text}: {price}\n{distance_text}: {distance}\n\n{confirmation_text}".format(
+    text = "{point_a_text}: {point_a}\n{price_text}: {price}\n\n{confirmation_text}".format(
         point_a_text = get_word('point a', update),
         point_a = point_a,
-        house_a = house_a,
-        point_b_text = get_word('point b', update),
-        point_b = point_b if point_b else '❌',
-        house_b = house_b,
         price_text = get_word('price', update),
         price = price,
-        distance_text = get_word('distance', update),
-        distance = distance if distance else '',
         confirmation_text = get_word('confirm order', update)
     )
     return text
