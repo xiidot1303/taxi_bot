@@ -12,12 +12,12 @@ def get_location_coordinates(l):
 def split_text_and_text_id(msg):
     return msg.split('<>?')
 
-def get_last_msg(context):
-    return context.user_data['last_msg']
+def get_last_msg_and_markup(context):
+    return context.user_data['last_msg'], context.user_data['last_markup'] if 'last_markup' in context.user_data else None
 
 def remove_inline_keyboards_from_last_msg(update, context):
     try:
-        last_msg = get_last_msg(context)
+        last_msg, markup = get_last_msg_and_markup(context)
         msg = bot_edit_message_text(update, context, last_msg.text, last_msg.message_id)
         return msg
     except:
@@ -30,3 +30,7 @@ def get_address_by_coordinates(lat, lon):
         return location
     except:
         return ""
+
+def set_last_msg_and_markup(context, msg, markup=None):
+    context.user_data['last_msg'] = msg
+    context.user_data['last_markup'] = markup

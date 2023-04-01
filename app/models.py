@@ -54,3 +54,15 @@ class City(models.Model):
 class Street(models.Model):
     title = models.CharField(max_length = 255, null=True, blank=False)
     city = models.ForeignKey('app.City', blank=False, on_delete=models.PROTECT)
+
+class Feedback(models.Model):
+    bot_user = models.ForeignKey(
+        'bot.Bot_user', null=True, blank=True, related_name='review_bot_user',
+        on_delete=models.SET_NULL, verbose_name='Пользователь'
+        )
+    message = models.TextField(null=True, blank=True, max_length=2500, verbose_name='Сообщение')
+    date = models.DateTimeField(db_index=True, null=True, auto_now_add=True, blank=True, verbose_name='Дата')
+
+    class Meta:
+        verbose_name = "Отзыв"
+        verbose_name_plural = "Отзывы"

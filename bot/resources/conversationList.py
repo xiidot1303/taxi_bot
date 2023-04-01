@@ -1,4 +1,4 @@
-n = 17
+n = 18
 (
     SELECT_LANG,
     GET_NAME,
@@ -17,5 +17,6 @@ n = 17
     GET_POINT_B_HOUSE,
     CONFIRM_ORDER,
     ORDER_PROCESS,
+    GET_FEEDBACK,
 
 ) = range(0, n)

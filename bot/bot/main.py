@@ -52,3 +52,10 @@ def bonus(update, context):
     balance = client_bonus_count(phone)
     text = get_word('your balance', update).format(balance)
     update_message_reply_text(update, text)
+
+def leave_feedback(update, context):
+    text = get_word('write your feedback', update)
+    markup = reply_keyboard_markup([[get_word('main menu', update)]])
+    msg = update_message_reply_text(update, text, markup)
+    set_last_msg_and_markup(context, msg, markup)
+    return GET_FEEDBACK

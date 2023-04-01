@@ -17,8 +17,17 @@ class StreetAdmin(admin.ModelAdmin):
 class OrderAdmin(admin.ModelAdmin):
     list_display = ['user', 'uuid', 'status']
 
+class FeedbackAdmin(admin.ModelAdmin):
+    list_display = ['bot_user', 'message', 'date']
+    list_filter = ['bot_user']
+
 admin.site.register(Language, LanguageAdmin)
 admin.site.register(Cheque, ChequeAdmin)
 admin.site.register(City, CityAdmin)
 admin.site.register(Street, StreetAdmin)
 admin.site.register(Order, OrderAdmin)
+admin.site.register(Feedback, FeedbackAdmin)
+
+
+admin.site.site_header = 'Rohat taxi Admin'
+admin.site.site_title = 'Admin'

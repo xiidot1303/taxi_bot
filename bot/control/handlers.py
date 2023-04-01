@@ -15,7 +15,7 @@ from telegram.ext import (
 from bot.resources.strings import lang_dict
 from bot.resources.conversationList import *
 from bot.bot import (
-    main, login, orders_history, settings, order, search
+    main, login, orders_history, settings, order, search, feedback
 )
 
 
@@ -95,6 +95,20 @@ order_history_handler = ConversationHandler(
     },
     fallbacks=[],
     name="order_history",
+    persistent=True,
+)
+
+feedback_handler = ConversationHandler(
+    entry_points=[
+        MessageHandler(Filters.text(lang_dict['leave feedback']), main.leave_feedback),
+    ],
+    states={
+        GET_FEEDBACK: [
+            MessageHandler(Filters.text, feedback.get_feedback)
+        ]
+    },
+    fallbacks=[],
+    name="feedback",
     persistent=True,
 )
 

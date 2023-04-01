@@ -20,10 +20,10 @@ def main_menu(update, context):
 
     bot = context.bot
     keyboard = [
-        [get_word('let order', update)],
-        [get_word('order history', update)],
-        [get_word('balance', update)],
+        [get_word('let order', update), get_word('order history', update)],
+        [get_word('balance', update), get_word('leave feedback', update)],
         [get_word('settings', update)],
+
     ]
 
     reply_markup = ReplyKeyboardMarkup(keyboard=keyboard, resize_keyboard=True)
