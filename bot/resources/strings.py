@@ -110,15 +110,21 @@ lang_dict = {
 
     "order": ["Buyurtma", "Заказ"],
 
+    # "select address or location": [
+    #     "🔘 <u>Manzil tanlash 🔎</u> tugamasini bosing va manzilni kiriting, natijani bosing\n<b>YOKI</b>\n📍 Lokatsiya yuboring", 
+    #     "🔘 Нажмите <u>Выбрать адрес 🔎</u> и введите адрес, нажмите результат\n<b>ИЛИ</b>\n📍 Отправьте локация"
+    # ],
+
     "select address or location": [
-        "🔘 <u>Manzil tanlash 🔎</u> tugamasini bosing va manzilni kiriting, natijani bosing\n<b>YOKI</b>\n📍 Lokatsiya yuboring", 
-        "🔘 Нажмите <u>Выбрать адрес 🔎</u> и введите адрес, нажмите результат\n<b>ИЛИ</b>\n📍 Отправьте локация"],
+        "Lokatsiya yuboring 📍", 
+        "Отправьте локацию 📍"
+    ],
 
     "search addresses": ["Manzil tanlash 🔎", "Выбрать адрес 🔎"],
 
     "send location": ["📍 Lokatsiya yuborish", "📍 Отправить местоположение"],
 
-    "select point a": ["<b>Manzilingizni kiriting 🅰️</b>", "<b>Выберите свой адрес 🅰️</b>"],
+    "select point a": ["<b>Manzilingizni kiriting 📌</b>", "<b>Выберите свой адрес из списка 📌</b>"],
 
     "select point b": ["<b>Borish manzilingizni kiriting 🅱️</b>", "<b>Выберите точку поездки 🅱️</b>"],
 
