@@ -39,7 +39,6 @@ def bot_send_message(update, context, text, reply_markup=None):
         )
     return message
 
-
 def send_newsletter(bot, chat_id, text, photo=None, video=None, document=None, reply_markup=None, pin_message=False):
     try:
         if not (photo or video or document):
@@ -50,38 +49,41 @@ def send_newsletter(bot, chat_id, text, photo=None, video=None, document=None, r
                 reply_markup=reply_markup,
                 parse_mode=ParseMode.HTML
             )
+        
+        if photo:
+            # send photo
+            message = bot.send_photo(
+                chat_id,
+                photo,
+                caption=text,
+                reply_markup=reply_markup,
+                parse_mode = ParseMode.HTML,
+            )
 
-        # send photo
-        message = bot.send_photo(
-            chat_id,
-            photo,
-            caption=text,
-            reply_markup=reply_markup,
-            parse_mode = ParseMode.HTML,
-        )
-
-        # send video
-        message = bot.send_video(
-            chat_id,
-            video,
-            caption=text,
-            reply_markup=reply_markup,
-            parse_mode = ParseMode.HTML,
-        )
-
-        # send document
-        message = bot.send_document(
-            chat_id,
-            document,
-            caption=text,
-            reply_markup=reply_markup,
-            parse_mode = ParseMode.HTML,
-        )
+        if video:
+            # send video
+            message = bot.send_video(
+                chat_id,
+                video,
+                caption=text,
+                reply_markup=reply_markup,
+                parse_mode = ParseMode.HTML,
+            )
+        if document:
+            # send document
+            message = bot.send_document(
+                chat_id,
+                document,
+                caption=text,
+                reply_markup=reply_markup,
+                parse_mode = ParseMode.HTML,
+            )
 
         if pin_message:
             bot.pin_chat_message(chat_id=chat_id, message_id=message.message_id)
+        return message
     except:
-        w=0
+        return None
 
 
 def bot_delete_message(update, context, message_id=None):

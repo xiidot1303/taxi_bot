@@ -7,14 +7,14 @@ def to_the_get_point_a(update, context):
     markup = selecting_address_keyboard(update)
     bot_send_and_delete_message(update, context, text, reply_markup=reply_keyboard_remove())
     msg = update_message_reply_text(update, text, markup)
-    context.user_data['last_msg'] = msg
+    set_last_msg_and_markup(context, msg, markup)
     return GET_POINT_A
 
 def _to_the_get_point_a_house(update, context):
     text = get_word('type house number', update)
     markup = selecting_address_house_keyboard(update)
     msg = update_message_reply_text(update, text, markup)
-    context.user_data['last_msg'] = msg
+    set_last_msg_and_markup(context, msg, markup)
     return GET_POINT_A_HOUSE
 
 
@@ -27,14 +27,14 @@ def _to_the_get_point_b(update, context):
     markup = selecting_address_with_skip_keyboard(update)
     bot_send_and_delete_message(update, context, text, reply_markup=reply_keyboard_remove())
     msg = update_message_reply_text(update, text, markup)
-    context.user_data['last_msg'] = msg
+    set_last_msg_and_markup(context, msg, markup)
     return GET_POINT_B
 
 def _to_the_get_point_b_house(update, context):
     text = get_word('type house number', update)
     markup = selecting_address_house_keyboard(update)
     msg = update_message_reply_text(update, text, markup)
-    context.user_data['last_msg'] = msg
+    set_last_msg_and_markup(context, msg, markup)
     return GET_POINT_B_HOUSE
 
 def _to_the_confirm_order(update, context):
@@ -60,7 +60,7 @@ def _to_the_confirm_order(update, context):
     # save token to user_data
     context.user_data['token'] = token
     # save last msg
-    context.user_data['last_msg'] = msg
+    set_last_msg_and_markup(context, msg, markup)
     return CONFIRM_ORDER
 
 def _to_the_order_process(update, context):
@@ -91,9 +91,11 @@ def _to_the_order_process(update, context):
     markup = ReplyKeyboardMarkup(
         keyboard=[[get_word('cancel order', update)]], resize_keyboard=True
         )
-    update_message_reply_text(update, text, markup)
+    msg = update_message_reply_text(update, text, markup)
     # set data  to user_data
     context.user_data['order'] = order
+    # save last msg
+    set_last_msg_and_markup(context, msg, markup)
     return ORDER_PROCESS
 
 ######## POINT A ########

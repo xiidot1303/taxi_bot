@@ -144,9 +144,10 @@ def ignore_start(func):
             update.message.text == "/start"
             or update.message.text == get_word("main menu", update)
         ):
-            
             # some func
-            bot_delete_message(update, context)
+            remove_inline_keyboards_from_last_msg(update, context)
+            message, markup = get_last_msg_and_markup(context)
+            update_message_reply_text(update, message.text, reply_markup=markup)
             return
         elif data == "main_menu":
             bot_delete_message(update, context)
