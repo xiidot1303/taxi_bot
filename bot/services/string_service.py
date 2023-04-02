@@ -65,9 +65,9 @@ def car_info_string(chat_id, remaining, car_phone, car_firstname, brand, model, 
     return text
 
 def select_point_a_string(update):
-    text1 = get_word('select point a', update)
+    # text1 = get_word('select point a', update)
     text2 = get_word('select address or location', update)
-    text = f"{text1}\n{text2}"
+    text = f"{text2}"
     return text
 
 def select_point_b_string(update, street, house=""):

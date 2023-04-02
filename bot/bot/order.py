@@ -2,11 +2,14 @@ from bot.bot import *
 
 def to_the_get_point_a(update, context):
     # text on message
-    text = select_point_a_string(update)
+    text1 = get_word('select point a', update)
+    text2 = select_point_a_string(update)
     # create inline button to switch to inline query
+    location_req_markup = request_location_keyboard(update)
     markup = selecting_address_keyboard(update)
-    bot_send_and_delete_message(update, context, text, reply_markup=reply_keyboard_remove())
-    msg = update_message_reply_text(update, text, markup)
+    # bot_send_and_delete_message(update, context, text, reply_markup=reply_keyboard_remove())
+    bot_send_message(update, context, text1, location_req_markup)
+    msg = update_message_reply_text(update, text2, markup)
     set_last_msg_and_markup(context, msg, markup)
     return GET_POINT_A
 
