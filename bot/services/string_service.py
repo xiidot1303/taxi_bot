@@ -101,7 +101,7 @@ def order_history_details_string(
     text = "🕙 <b>{time}</b>\n\n<i>{point_a_text}:</i> {point_a}\n<i>{point_b_text}:</i> {point_b}\n"
     text += "<i>{amount_text}:</i> {amount}\n<i>{distance_text}:</i> {distance} {metr}\n"
     text += "<i>{standtime_text}:</i> {standtime}\n<i>{waittime_text}:</i> {waittime}\n\n"
-    text += "{driver_info_text}:\n<i>{name_text}:</i> {lastname} {firstname}\n<i>{phone_text}:</i> {phone}\n"
+    text += "<i>{name_text}:</i> {lastname} {firstname}\n<i>{phone_text}:</i> {phone}\n"
     text += "<i>{car_info_text}:</i> {color} {brand} {model} | {autonum}\n"
     text = text.format(
         time = endtime.strftime("%d.%m.%Y %H:%M"),
@@ -122,8 +122,7 @@ def order_history_details_string(
             get_word('sek.', update)),
         waittime_text = get_word('waittime', update),
         waittime = waittime,
-        driver_info_text = get_word('driver info', update),
-        name_text = 'ℹ️ ' + get_word('name', update),
+        name_text = get_word('driver name', update),
         lastname = lastname,
         firstname = firstname,
         phone_text = get_word('phone', update),

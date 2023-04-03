@@ -134,9 +134,9 @@ lang_dict = {
 
     "type house number": ["🏘 Uy raqamini kiriting", "🏘 Введите номер дома"],
 
-    "point a": ["🅰️ Manzil", "🅰️ Адрес"],
+    "point a": ["🏠 Manzil", "🏠 Адрес"],
     
-    "point b": ["🅱️ Qayerga", "🅱️ Куда"],
+    "point b": ["🏡 Qayerga", "🏡 Куда"],
 
     "confirm order": [
         "☑️ Ma'lumotlar to'g'ri ekanini tekshiring va <u>Tasdiqlash ✅</u> tugamasini bosing", 
@@ -151,7 +151,7 @@ lang_dict = {
 
     "price": ["💰 Narx", "💰 Цена"],
 
-    "distance": ["🆎 Masofa", "🆎 Дистанция"],
+    "distance": ["🚕 Masofa", "🚕 Дистанция"],
 
     "invalid location": ["⛔️ Lokatsiya xato", "⛔️ Недопустимое местоположение"],
 
@@ -188,23 +188,25 @@ lang_dict = {
         "❌ Buyurtmangiz bekor qilindi", 
         "❌ Ваш заказ отменен"],
 
-    "amount": ["💲 Miqdor", "💲 Сумма"],
+    "amount": ["💵 Miqdor", "💵 Сумма"],
 
     "meter": ["m", "м"],
 
-    "standtime": ["🚦 Vaqt", "🚦 Стоянка"],
+    "standtime": ["🅿️ Vaqt", "🅿️ Стоянка"],
 
     "min.": ["min.", "мин."],
 
     "sek.": ["sek.", "сек."],
 
-    "waittime": ["⏳ Kutish vaqti", "⏳ Время ожидания"],
+    "waittime": ["🚖 Kutish vaqti", "🚖 Время ожидания"],
 
     "driver info": ["👨‍✈️ Haydovchi haqida ma'lumot", "👨‍✈️ Информация о водителе"],
+    
+    "driver name": ["👨‍✈️ Haydovchi ismi", "👨‍✈️ Имя  водителя"],
 
     "name": ["Ism", "Имя"],
 
-    "phone": ["📞 Telefon", "📞 Телефон"],
+    "phone": ["📱 Telefon", "📱 Телефон"],
 
     "loading": ["Yuklanmoqda... ⏳", "Загрузка... ⏳"],
 
