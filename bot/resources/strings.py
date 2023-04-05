@@ -27,7 +27,7 @@ lang_dict = {
         """Telefon raqamni o\'zgartirish 📞""",
         """Смена номера телефона 📞""",
     ],
-    "change name": ["""Ismni o\'zgartirish 👤""", """Смени имени 👤"""],
+    "change name": ["""Ismni o\'zgartirish 👤""", """Смена имени 👤"""],
     "settings desc": ["""Sozlamalar ⚙️""", """Настройки ⚙️"""],
     "your phone number": [
         """📌 Sizning telefon raqamingiz: <> 📌""",
