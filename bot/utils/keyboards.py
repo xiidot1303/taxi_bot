@@ -57,9 +57,8 @@ def order_days_keyboard(update, days):
 def settings_keyboard(update):
 
     buttons = [
-        [get_word("change lang", update)],
-        [get_word("change name", update)],
-        [get_word("change phone number", update)],
+        [get_word("change lang", update), get_word("change name", update)],
+        [get_word("change phone number", update), get_word("change city", update)],
         [get_word("main menu", update)],
     ]
 

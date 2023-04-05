@@ -66,6 +66,28 @@ def all_settings(update, context):
         )
         return NAME_SETTINGS
 
+    elif msg == get_word("change city", update):
+        user = get_user_by_update(update)
+        current_city = user.city.title if user.city else ''
+        text = (
+            get_word("current city", update)
+            + current_city
+            + "\n\n"
+            + get_word("select city", update)
+        )
+        buttons = [
+            [city.title] for city in cities_all()
+        ]
+        buttons.append([get_word("back", update)])
+        update.message.reply_text(
+            text,
+            reply_markup=ReplyKeyboardMarkup(
+                keyboard=buttons, resize_keyboard=True
+            ),
+            parse_mode=ParseMode.HTML,
+        )
+        return CITY_SETTINGS
+
 
 #  lang settings
 @is_start
@@ -140,5 +162,25 @@ def name_settings(update, context):
     obj.name = new_name
     obj.save()
     update.message.reply_text(get_word("changed your name", update))
+    make_button_settings(update, context)
+    return ALL_SETTINGS
+
+# city settings
+@is_start
+def city_settings(update, context):
+    msg = update.message.text
+    if msg == get_word("back", update):
+        make_button_settings(update, context)
+        return ALL_SETTINGS
+    new_city = msg
+    obj = get_user_by_update(update)
+    city = get_city_by_title(new_city)
+    # check city is available
+    if not city:
+        update_message_reply_text(update, get_word('incorrect city', update))
+        return
+    obj.city = city
+    obj.save()
+    update.message.reply_text(get_word("changed your city", update))
     make_button_settings(update, context)
     return ALL_SETTINGS

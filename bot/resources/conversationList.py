@@ -1,4 +1,4 @@
-n = 18
+n = 20
 (
     SELECT_LANG,
     GET_NAME,
@@ -18,5 +18,7 @@ n = 18
     CONFIRM_ORDER,
     ORDER_PROCESS,
     GET_FEEDBACK,
+    GET_CITY,
+    CITY_SETTINGS,
 
 ) = range(0, n)

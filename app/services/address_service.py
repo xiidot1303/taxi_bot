@@ -18,8 +18,20 @@ def get_street_by_pk(pk):
     obj = get_object_or_404(Street, pk=pk)
     return obj
 
-def filter_streets_by_title_regex(text_en, text_ru, text):
-    streets = Street.objects.filter(
+def filter_streets_by_title_regex(city, text_en, text_ru, text):
+    if city:
+        streets = Street.objects.filter(city = city)
+    else:
+        streets = Street.objects.filter()
+
+    streets = streets.filter(
         Q(title__iregex=text_en) | Q(title__iregex=text_ru) | Q(title__icontains=text)
         )
     return streets
+
+def cities_all():
+    return City.objects.all()
+
+def get_city_by_title(title):
+    query = City.objects.filter(title=title)
+    return query[0] if query else None

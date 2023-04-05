@@ -31,6 +31,15 @@ def _to_the_get_contact(update):
     )
     return GET_CONTACT
 
+def _to_the_get_city(update, context):
+    buttons = [
+        [city.title] for city in cities_all()
+    ]
+    markup = ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True)
+    text = get_word('select city', update)
+    msg = update_message_reply_text(update, text, markup)
+    set_last_msg_and_markup(context, msg, markup)
+    return GET_CITY
 
 @is_start_registr
 def select_lang(update, context):
@@ -81,5 +90,23 @@ def get_contact(update, context):
     obj = get_object_by_user_id(user_id=update.message.chat.id)
     obj.phone = phone_number
     obj.save()
+    return _to_the_get_city(update, context)
+
+@ignore_start
+def get_city(update, context):
+    # get city name from message
+    city_title = update.message.text
+    # get bot user
+    bot_user = get_object_by_update(update)
+    # get city obj by title
+    city = get_city_by_title(city_title)
+    # check city is available
+    if not city:
+        update_message_reply_text(update, get_word('incorrect city', update))
+        return
+    # set bot user city
+    bot_user.city = city
+    bot_user.save()
+    # go to main menu
     main_menu(update, context)
     return ConversationHandler.END

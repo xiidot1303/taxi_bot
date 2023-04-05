@@ -9,6 +9,7 @@ class Bot_user(models.Model):
     phone = models.CharField(null=True, blank=True, max_length=16, default='')
     lang = models.CharField(null=True, blank=True, max_length=4)
     date = models.DateTimeField(db_index=True, null=True, auto_now_add=True, blank=True)
+    city = models.ForeignKey('app.City', null=True, blank=True, on_delete=models.PROTECT, related_name='bot_user_city')
 
     def __str__(self) -> str:
         try:

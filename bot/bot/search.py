@@ -11,7 +11,8 @@ def get_inline_query(update, context):
         text_en = text
     text_en = regexing_en(text_en)
     text_ru = regexing_ru(text_ru)
-    streets = filter_streets_by_title_regex(text_en, text_ru, text)
+    bot_user = get_object_by_user_id(update.inline_query.from_user.id)
+    streets = filter_streets_by_title_regex(bot_user.city, text_en, text_ru, text)
     article = [
         inlinequeryresultarticle(
             obj.title, 
