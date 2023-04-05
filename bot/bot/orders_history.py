@@ -1,4 +1,5 @@
 from bot.bot import *
+import json
 
 def _to_the_get_year(update, context):
     bot_send_chat_action(update, context)
@@ -104,6 +105,10 @@ def get_day_query(update, context):
         house = order[10] or ''
         dststreet = order[11] or ''
         dsthouse = order[12] or ''
+        try:
+            taximeter_data = json.loads(order[13])
+        except:
+            taximeter_data = {}
         # get car info
         car_info = get_car_info(executor_id) or ['' for i in range(7)]
         autonum = car_info[0] or ''
@@ -113,12 +118,12 @@ def get_day_query(update, context):
         lastname = car_info[4] or ''
         firstname = car_info[5] or ''
         phone = car_info[6] or ''
-
+        
         text = order_history_details_string(
             update,
             src, dst, starttime, endtime, amount, distance,
             standtime, waittime, street, house, dststreet, dsthouse,
-            autonum, color, brand, model, lastname, firstname, phone
+            autonum, color, brand, model, lastname, firstname, phone, taximeter_data
         )
         bot_send_message(update, context, text)
 

@@ -4,7 +4,7 @@ def cheque_info(
     chat_id, 
     src, dst, starttime, endtime, amount, distance, 
     standtime, waittime, street, house, dststreet, dsthouse,
-    autonum, color, brand, model, lastname, firstname, phone
+    autonum, color, brand, model, lastname, firstname, phone, taximeter_data
     ):
     # text = get_word('cheque info', chat_id=chat_id)
     # text = text.format(
@@ -14,7 +14,7 @@ def cheque_info(
 
 
     text = "<b>{finish_text}</b>\n\n<i>{point_a_text}:</i> {point_a}\n<i>{point_b_text}:</i> {point_b}\n"
-    text += "<i>{amount_text}:</i> {amount}\n<i>{distance_text}:</i> {distance} {metr}\n"
+    text += "<i>{amount_text}:</i> {amount}\n<i>{baggage_text}:</i> {baggage}\n<i>{distance_text}:</i> {distance} {metr}\n"
     text += "<i>{standtime_text}:</i> {standtime}\n<i>{waittime_text}:</i> {waittime}\n\n"
     text += "{driver_info_text}:\n<i>{name_text}:</i> {lastname} {firstname}\n<i>{phone_text}:</i> {phone}\n"
     text += "<i>{car_info_text}:</i> {color} {brand} {model} | {autonum}\n"
@@ -26,6 +26,8 @@ def cheque_info(
         point_b = dst,
         amount_text = get_word('amount', chat_id=chat_id),
         amount = amount,
+        baggage_text = get_word('baggage', chat_id=chat_id),
+        baggage = float(taximeter_data['margin']) if 'margin' in taximeter_data else "",
         distance_text = get_word('distance', chat_id=chat_id),
         distance = distance,
         metr = get_word('meter', chat_id=chat_id),
@@ -96,10 +98,10 @@ def order_history_details_string(
     update,
     src, dst, starttime, endtime, amount, distance, 
     standtime, waittime, street, house, dststreet, dsthouse,
-    autonum, color, brand, model, lastname, firstname, phone
+    autonum, color, brand, model, lastname, firstname, phone, taximeter_data
 ):
     text = "🕙 <b>{time}</b>\n\n<i>{point_a_text}:</i> {point_a}\n<i>{point_b_text}:</i> {point_b}\n"
-    text += "<i>{amount_text}:</i> {amount}\n<i>{distance_text}:</i> {distance} {metr}\n"
+    text += "<i>{amount_text}:</i> {amount}\n<i>{baggage_text}:</i> {baggage}\n<i>{distance_text}:</i> {distance} {metr}\n"
     text += "<i>{standtime_text}:</i> {standtime}\n<i>{waittime_text}:</i> {waittime}\n\n"
     text += "<i>{name_text}:</i> {lastname} {firstname}\n<i>{phone_text}:</i> {phone}\n"
     text += "<i>{car_info_text}:</i> {color} {brand} {model} | {autonum}\n"
@@ -111,6 +113,8 @@ def order_history_details_string(
         point_b = dst,
         amount_text = get_word('amount', update),
         amount = amount,
+        baggage_text = get_word('baggage', update),
+        baggage = float(taximeter_data['margin']) if 'margin' in taximeter_data else "",
         distance_text = get_word('distance', update),
         distance = distance,
         metr = get_word('meter', update),

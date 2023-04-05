@@ -5,6 +5,7 @@ from bot.services import string_service
 from bot.services.language_service import get_word
 from app.services.order_service import get_order_by_uuid_without_404, get_order_by_order_id_without_404
 from app.services.postgresql_service import get_car_info, get_order_by_id
+import json
 
 def send_cheque(phone, order_id):
     if users := filter_users_by_phone(phone):
@@ -24,6 +25,10 @@ def send_cheque(phone, order_id):
         house = order[10] or ''
         dststreet = order[11] or ''
         dsthouse = order[12] or ''
+        try:
+            taximeter_data = json.loads(order[13])
+        except:
+            taximeter_data = {}
         # get car info
         car_info = get_car_info(executor_id) or ['' for i in range(7)]
         autonum = car_info[0] or ''
@@ -38,7 +43,7 @@ def send_cheque(phone, order_id):
             user.user_id, 
             src, dst, starttime, endtime, amount, distance,
             standtime, waittime, street, house, dststreet, dsthouse,
-            autonum, color, brand, model, lastname, firstname, car_phone
+            autonum, color, brand, model, lastname, firstname, car_phone, taximeter_data
             )
         if order_obj:
             markup = InlineKeyboardMarkup([[
