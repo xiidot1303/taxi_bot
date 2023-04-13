@@ -34,3 +34,11 @@ def get_address_by_coordinates(lat, lon):
 def set_last_msg_and_markup(context, msg, markup=None):
     context.user_data['last_msg'] = msg
     context.user_data['last_markup'] = markup
+
+def is_phonenumber_correct(phone):
+    phone = '+998' + phone if len(phone) == 9 else phone
+    phone = '+' + phone if len(phone) == 12 and phone[:3] == '998' else phone
+    if len(phone) == 13 and phone[:4] == '+998':
+            return phone
+    else:
+        return False

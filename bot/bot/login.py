@@ -80,6 +80,10 @@ def get_contact(update, context):
 
     if update.message.contact == None or not update.message.contact:
         phone_number = update.message.text
+        phone_number = is_phonenumber_correct(phone_number)
+        if not phone_number:
+            update.message.reply_text(get_word("number is incorrect", update))
+            return
     else:
         phone_number = update.message.contact.phone_number
     # check that phone is available or no

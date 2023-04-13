@@ -134,6 +134,10 @@ def phone_settings(update, context):
             make_button_settings(update, context)
             return ALL_SETTINGS
         phone_number = update.message.text
+        phone_number = is_phonenumber_correct(phone_number)
+        if not phone_number:
+            update.message.reply_text(get_word("number is incorrect", update))
+            return
     else:
         phone_number = update.message.contact.phone_number
 
