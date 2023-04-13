@@ -24,6 +24,10 @@ def settings(update, context):
     return ALL_SETTINGS
 
 def ordering(update, context):
+    bot_user = get_object_by_update(update)
+    if bot_user.blocked:
+        update_message_reply_text(update, get_word('you are blocked', update))
+        return
     context.user_data['next'] = CONFIRM_ORDER
     context.user_data['dst'] = ''
     context.user_data['dst_street'] = ''

@@ -4,7 +4,7 @@ from django.utils.html import format_html
 from django.urls import reverse
 
 class Bot_userAdmin(admin.ModelAdmin):
-    list_display = ['name', 'username', 'phone', 'date', 'edit_button']
+    list_display = ['name', 'username', 'phone', 'status', 'date', 'edit_button']
     search_fields = ['name', 'username', 'phone']
     list_filter = ['date']
     list_display_links = None
@@ -14,9 +14,19 @@ class Bot_userAdmin(admin.ModelAdmin):
         return format_html('<a class="btn btn-primary" href="{}"><i class="fas fa-edit"></i></a>', change_url)
     edit_button.short_description = 'Действие'
 
+    def status(self, obj):
+        if obj.blocked:
+            key = 'ban'
+            color = 'red'
+        else:
+            key = 'check-square'
+            color =  'green'
+        return format_html(f'<i class="fas fa-{key}" style="color: {color};"></i>')
+    status.short_description = 'Статус'
+
     fieldsets = (
         ('', {
-            'fields': ['name', 'phone'],
+            'fields': ['name', 'phone', 'blocked'],
         }),
     )    
 

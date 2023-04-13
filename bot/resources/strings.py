@@ -262,7 +262,10 @@ lang_dict = {
 
     "baggage": ["🛄 Yukxona", "🛄 Багаж"],
 
-    "": ["", ""],
+    "you are blocked": [
+        "🚫 Siz qora ro'yxatdasiz va buyurtmani amalga oshira olmaysiz!", 
+        "🚫 Вы в черном списке и не можете выполнить заказ!"
+        ],
 
     "": ["", ""],
 
