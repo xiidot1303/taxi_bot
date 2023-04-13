@@ -36,6 +36,7 @@ def set_last_msg_and_markup(context, msg, markup=None):
     context.user_data['last_markup'] = markup
 
 def is_phonenumber_correct(phone):
+    phone = phone.replace(' ', '')
     phone = '+998' + phone if len(phone) == 9 else phone
     phone = '+' + phone if len(phone) == 12 and phone[:3] == '998' else phone
     if len(phone) == 13 and phone[:4] == '+998':
