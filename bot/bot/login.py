@@ -80,12 +80,13 @@ def get_contact(update, context):
 
     if update.message.contact == None or not update.message.contact:
         phone_number = update.message.text
-        phone_number = is_phonenumber_correct(phone_number)
-        if not phone_number:
-            update.message.reply_text(get_word("number is incorrect", update))
-            return
     else:
         phone_number = update.message.contact.phone_number
+    # check phone number
+    phone_number = is_phonenumber_correct(phone_number)
+    if not phone_number:
+        update.message.reply_text(get_word("number is incorrect", update))
+        return
     # check that phone is available or no
     is_available = Bot_user.objects.filter(phone=phone_number)
     if is_available:
