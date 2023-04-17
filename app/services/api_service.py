@@ -1,15 +1,19 @@
 from app.utils import send_request
 from config import API_KEY as api_key, API_URL as api_url, DEBUG
 
-data = {'api_key': api_key}
+def get_data():
+    data = {'api_key': api_key}
+    return data
 
 def get_services_api():
     url = api_url + '/services'
+    data = get_data()
     response = send_request(url, data)
     return response['response']['services']
 
 def get_streets_api(city_id):
     url = api_url + '/streets'
+    data = get_data()
     data['city_id'] = city_id
     response = send_request(url, data)
     return response['response']['streets']
@@ -19,6 +23,7 @@ def calculate_order_pre_cost_api(
         src_lat=None, src_lon=None, dst_lon=None, dst_lat=None, service_id=None
     ):
     url = api_url + '/order/pre_cost'
+    data = get_data()
     data['phone'] = phone
     # identify src type
     if src == 'location':
@@ -48,6 +53,7 @@ def calculate_order_pre_cost_api(
 
 def region_by_coordinates_api(lat, lon):
     url = api_url + '/region_by_coord'
+    data = get_data()
     data['lat'] = lat
     data['lon'] = lon
     response = send_request(url, data)
@@ -55,6 +61,7 @@ def region_by_coordinates_api(lat, lon):
 
 def create_order_api(phone, token):
     url = api_url + '/order'
+    data = get_data()
     data['phone'] = phone
     data['token'] = token
     data['moderation_required'] = 'no'
@@ -63,7 +70,6 @@ def create_order_api(phone, token):
         data['comment'] = 'TEST Гайрат акага'
     else:
         data['comment'] = 'From Telegram Bot'
-
     response = send_request(url, data, 'post')
     if response['status'] == 'DONE':
         return True, response['response']['uuid']
@@ -72,12 +78,14 @@ def create_order_api(phone, token):
 
 def cancel_order_api(uuid):
     url = api_url + '/cancel_order'
+    data = get_data()
     data['uuid'] = uuid
     response = send_request(url, data, 'post')
     return True if response['status'] == 'DONE' else False
 
 def client_bonus_count(phone):
     url = api_url + '/client/bonus/count'
+    data = get_data()
     data['phone'] = phone
     response = send_request(url, data)
     return response['response']['bonus']
