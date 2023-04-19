@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 class Language(models.Model):
     user_ip = models.CharField(null=True, blank=False, max_length=32)
@@ -62,7 +63,40 @@ class Feedback(models.Model):
         )
     message = models.TextField(null=True, blank=True, max_length=2500, verbose_name='Сообщение')
     date = models.DateTimeField(db_index=True, null=True, auto_now_add=True, blank=True, verbose_name='Дата')
+    STATUS_CHOICES = [
+        (0, "unread"),
+        (1, "read"),
+    ]
+    status = models.IntegerField(choices=STATUS_CHOICES, default=0)
+    model_name = models.CharField(null=True, blank=False, max_length=16, default='feedback')
+
+    def save(self, *args, **kwargs):
+        bot_user = self.bot_user
+        if self.status == 0:
+            bot_user.last_chat = datetime.now()
+            bot_user.save()
+        return super(Feedback, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = "Отзыв"
         verbose_name_plural = "Отзывы"
+
+class Response(models.Model):
+    bot_user = models.ForeignKey(
+        'bot.Bot_user', null=True, blank=True, related_name='response_bot_user',
+        on_delete=models.SET_NULL, verbose_name='Пользователь'
+        )
+    message = models.TextField(null=True, blank=True, max_length=2500, verbose_name='Сообщение')
+    date = models.DateTimeField(db_index=True, null=True, auto_now_add=True, blank=True, verbose_name='Дата')
+    model_name = models.CharField(null=True, blank=False, max_length=255, default='response')
+
+
+    def save(self, *args, **kwargs):
+        bot_user = self.bot_user
+        bot_user.last_chat = datetime.now()
+        bot_user.save()
+        return super(Response, self).save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = "Ответ"
+        verbose_name_plural = "Ответы"

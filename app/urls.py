@@ -7,7 +7,7 @@ from django.contrib.auth.views import (
 )
 
 from app.views import (
-    callback
+    callback, chat
 )
 
 urlpatterns = [
@@ -23,4 +23,8 @@ urlpatterns = [
     path('cheque-info', callback.cheque_info),
     # re_path(r'^cheque-info(?P<path>.*)$', callback.cheque_info),
 
+    # chat
+    path('chat/<int:chat_id>/', chat.main, name='chat'),
+    path('chat', chat.main),
+    path('send-message', chat.send_message),
 ]

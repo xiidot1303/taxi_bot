@@ -4,7 +4,13 @@ from django.utils.html import format_html
 from django.urls import reverse
 
 class Bot_userAdmin(admin.ModelAdmin):
-    list_display = ['name', 'username', 'phone', 'status', 'date', 'edit_button']
+    def get_list_display(self, request):
+        if request.user.is_superuser:
+            list_display = ['name', 'username', 'phone', 'status', 'date', 'last_chat', 'edit_button']
+        else:
+            list_display = ['name', 'username', 'phone', 'status', 'date', 'edit_button']
+        return list_display
+
     search_fields = ['name', 'username', 'phone']
     list_filter = ['date']
     list_display_links = None
@@ -24,11 +30,17 @@ class Bot_userAdmin(admin.ModelAdmin):
         return format_html(f'<i class="fas fa-{key}" style="color: {color};"></i>')
     status.short_description = 'Статус'
 
-    fieldsets = (
-        ('', {
-            'fields': ['name', 'phone', 'blocked'],
-        }),
-    )    
+    def get_fieldsets(self, request, obj):
+        if request.user.is_superuser:
+            fieldsets = super().get_fieldsets(request, obj)
+        else:
+            fieldsets = (
+                ('', {
+                    'fields': ['name', 'phone', 'blocked'],
+                }),
+            )    
+        return fieldsets
+
 
 class MesageAdmin(admin.ModelAdmin):
     list_display = ['bot_users_name', 'small_text', 'open_photo', 'open_video', 'open_file', 'date']

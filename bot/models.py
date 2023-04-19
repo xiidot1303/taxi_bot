@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import FileExtensionValidator
+from app.models import Feedback, Response
 
 class Bot_user(models.Model):
     user_id = models.BigIntegerField(null=True)
@@ -11,6 +12,27 @@ class Bot_user(models.Model):
     date = models.DateTimeField(db_index=True, null=True, auto_now_add=True, blank=True)
     city = models.ForeignKey('app.City', null=True, blank=True, on_delete=models.PROTECT, related_name='bot_user_city')
     blocked = models.BooleanField(default=False)
+    last_chat = models.DateTimeField(null=True, blank=True)
+    
+    @property
+    def messages(self):
+        feedbacks = Feedback.objects.filter(bot_user__id = self.id).values('message', 'date', 'model_name')
+        responses = Response.objects.filter(bot_user__id = self.id).values('message', 'date', 'model_name')
+        compared_messages = feedbacks.union(responses).order_by('date')
+        return compared_messages
+    
+    @property
+    def last_message(self):
+        feedbacks = Feedback.objects.filter(bot_user__id = self.id).values('message', 'date')
+        responses = Response.objects.filter(bot_user__id = self.id).values('message', 'date')
+        compared_messages = feedbacks.union(responses).order_by('date')
+        return compared_messages.last()
+
+    @property
+    def unread_feedbacks(self):
+        feedbacks = Feedback.objects.filter(bot_user__id = self.id, status = 0)
+        return len(feedbacks)
+
     def __str__(self) -> str:
         try:
             return self.name + ' ' + str(self.phone)
