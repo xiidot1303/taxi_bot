@@ -55,9 +55,10 @@ def send_cheque(phone, order_id):
         else:
             markup = None
         msg = send_newsletter(bot, user.user_id, text, reply_markup=markup)
-        # save context user_data
-        dp.user_data[user.user_id]['last_msg'] = msg
-        dp.user_data[user.user_id]['last_markup'] = markup
+        if markup:
+            # save context user_data
+            dp.user_data[user.user_id]['last_msg'] = msg
+            dp.user_data[user.user_id]['last_markup'] = markup
         return True
     else:
         return False
@@ -94,9 +95,10 @@ def send_order_status(phone, data):
         if not order:
             markup = None
         msg = send_newsletter(bot, user.user_id, text, reply_markup=markup)
-        # save context user_data
-        dp.user_data[user.user_id]['last_msg'] = msg
-        dp.user_data[user.user_id]['last_markup'] = markup
+        if markup:
+            # save context user_data
+            dp.user_data[user.user_id]['last_msg'] = msg
+            dp.user_data[user.user_id]['last_markup'] = markup
         return True
     else:
         return False 
