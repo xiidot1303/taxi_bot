@@ -52,6 +52,11 @@ class City(models.Model):
     def __str__(self) -> str:
         return self.title
 
+    class Meta:
+        verbose_name = "Города"
+        verbose_name_plural = "Город"
+
+
 class Street(models.Model):
     title = models.CharField(max_length = 255, null=True, blank=False)
     city = models.ForeignKey('app.City', blank=False, on_delete=models.PROTECT)
