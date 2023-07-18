@@ -57,9 +57,9 @@ def cheque_info(
     return text
 
 def car_info_string(chat_id, remaining, car_phone, car_firstname, brand, model, color, autonum):
-    text = "<i>{}</i>: {} {} {}, <i>{}</i>: {}\n<i>{}</i>: {} {}\n<i>{}</i>: {}, {}".format(
-        get_word('car', chat_id=chat_id), brand, model, color, 
-        get_word('number', chat_id=chat_id), autonum,
+    text = "<i>{}</i>: {} {} {} | {}\n<i>{}</i>: {} {}\n<i>{}</i>: {}, {}".format(
+        get_word('car', chat_id=chat_id), color, brand, model, 
+        autonum,
         get_word('arrival time', chat_id=chat_id), remaining, get_word('minute', chat_id=chat_id),
         get_word('driver', chat_id=chat_id), car_firstname, car_phone
 
