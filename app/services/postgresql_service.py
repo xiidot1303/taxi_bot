@@ -57,7 +57,7 @@ def get_days_of_order(phone_id, year, month):
 def get_orders_by_date(phone_id, year, month, day):
     con = connect_db()
     cursor = con.cursor()
-    cursor.execute(f"""SELECT src, dst, starttime, endtime, executor_id, amount, distance, standtime, waittime, street, house, dststreet, dsthouse, taximeter_data FROM "order" WHERE EXTRACT(YEAR FROM endtime) = {year} AND EXTRACT(MONTH FROM endtime) = {month} AND EXTRACT(DAY FROM endtime) = {day} AND phone_id = {phone_id} AND status=100;""")
+    cursor.execute(f"""SELECT src, dst, starttime, endtime, executor_id, amount, distance, standtime, waittime, taximeter_data FROM "order" WHERE EXTRACT(YEAR FROM endtime) = {year} AND EXTRACT(MONTH FROM endtime) = {month} AND EXTRACT(DAY FROM endtime) = {day} AND phone_id = {phone_id} AND status=100;""")
     result = cursor.fetchall()
     con.close()
     return result
@@ -65,7 +65,7 @@ def get_orders_by_date(phone_id, year, month, day):
 def get_order_by_id(id):
     con = connect_db()
     cursor = con.cursor()
-    cursor.execute(f"""SELECT src, dst, starttime, endtime, executor_id, amount, distance, standtime, waittime, street, house, dststreet, dsthouse, taximeter_data FROM "order" WHERE id={id};""")
+    cursor.execute(f"""SELECT src, dst, starttime, endtime, executor_id, amount, distance, standtime, waittime, taximeter_data FROM "order" WHERE id={id};""")
     result = cursor.fetchone()
     con.close()
     return result

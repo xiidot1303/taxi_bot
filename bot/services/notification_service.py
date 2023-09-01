@@ -21,10 +21,10 @@ def send_cheque(phone, order_id):
         distance = order[6] or ''
         standtime = order[7] or ''
         waittime = order[8] or ''
-        street = order[9] or ''
-        house = order[10] or ''
-        dststreet = order[11] or ''
-        dsthouse = order[12] or ''
+        street = src
+        house = ''
+        dststreet = ''
+        dsthouse = ''
         try:
             taximeter_data = json.loads(order[13])
         except:
