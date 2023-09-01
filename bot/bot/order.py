@@ -281,7 +281,8 @@ def order_process(update, context):
         if order.status in [80, 10, 11, 1]:
             # cancel order
             cancel_order_api(order.uuid)
-            return
+            main_menu(update, context)
+            return ConversationHandler.END
     # ignore current message and delete
     bot_delete_message(update, context)
     return

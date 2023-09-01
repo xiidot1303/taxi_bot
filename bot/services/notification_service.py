@@ -74,12 +74,12 @@ def send_order_status(phone, data):
             
         elif status_code == 95:
             text = get_word('your order is cancelled', chat_id=user.user_id)
-            markup = InlineKeyboardMarkup([[
-                InlineKeyboardButton(
-                    text=get_word('main menu', chat_id=user.user_id), 
-                    callback_data='main_menu'
-                    )
-            ]])
+            # markup = InlineKeyboardMarkup([[
+            #     InlineKeyboardButton(
+            #         text=get_word('main menu', chat_id=user.user_id), 
+            #         callback_data='main_menu'
+            #         )
+            # ]])
         elif status_code == 10:
             text = string_service.car_info_string(
                 user.user_id, data['remaining'], data['car_phone'], 
