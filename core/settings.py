@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ALLOWED_HOSTS
 INSTALLED_APPS = [
     'app.apps.app',
     'bot',
+    'django_apscheduler',
     'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
