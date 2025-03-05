@@ -13,7 +13,8 @@ def connect_db():
         user=PG_USER,
         password=PG_PASSWORD,
         host=PG_HOST,
-        port=PG_PORT
+        port=PG_PORT,
+        connect_timeout=2
     )
     return con
 
